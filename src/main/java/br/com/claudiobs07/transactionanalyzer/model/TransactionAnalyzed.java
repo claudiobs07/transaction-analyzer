@@ -2,7 +2,7 @@ package br.com.claudiobs07.transactionanalyzer.model;
 
 public class TransactionAnalyzed {
 
-    public TransactionAnalyzed(Long transactionId, Integer score, TransactionScoreStatus status) {
+    public TransactionAnalyzed(Long transactionId, Integer score, TransactionStatus status) {
         this.transactionId = transactionId;
         this.score = score;
         this.status = status;
@@ -14,11 +14,11 @@ public class TransactionAnalyzed {
 
     private Integer score;
 
-    private TransactionScoreStatus status;
+    private TransactionStatus status;
 
-    public TransactionAnalyzed(TransactionAnalisysScore transactionAnalisysScore, TransactionScoreStatus status) {
-        this.transactionId = transactionAnalisysScore.getTransaction().getId();
-        this.score = transactionAnalisysScore.getScore();
+    public TransactionAnalyzed(TransactionScore transactionScore, TransactionStatus status) {
+        this.transactionId = transactionScore.getTransaction().getId();
+        this.score = transactionScore.getScore();
         this.status = status;
     }
 
@@ -34,7 +34,7 @@ public class TransactionAnalyzed {
         return score;
     }
 
-    public TransactionScoreStatus getStatus() {
+    public TransactionStatus getStatus() {
         return status;
     }
 }

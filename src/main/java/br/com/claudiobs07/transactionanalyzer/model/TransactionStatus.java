@@ -1,6 +1,6 @@
 package br.com.claudiobs07.transactionanalyzer.model;
 
-public enum TransactionScoreStatus {
+public enum TransactionStatus {
 
     APPROVED,
     FRAUD,

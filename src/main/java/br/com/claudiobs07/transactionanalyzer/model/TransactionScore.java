@@ -1,8 +1,8 @@
 package br.com.claudiobs07.transactionanalyzer.model;
 
-public class TransactionAnalisysScore {
+public class TransactionScore {
 
-    public TransactionAnalisysScore(Transaction transaction) {
+    public TransactionScore(Transaction transaction) {
         this.transaction = transaction;
         this.score = 0;
     }
