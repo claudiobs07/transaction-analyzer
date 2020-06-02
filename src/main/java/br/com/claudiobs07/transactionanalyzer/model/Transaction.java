@@ -1,8 +1,15 @@
 package br.com.claudiobs07.transactionanalyzer.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Transaction {
+
+    public Transaction() { }
 
     public Transaction(Long id, String sourceAccountId, String destinationAccountId, Double amount, TransactionType type, Channel channel, LocalDateTime createdAt) {
         this.id = id;
@@ -14,10 +21,8 @@ public class Transaction {
         this.createdAt = createdAt;
     }
 
-    public Transaction(String sourceAccountId, String destinationAccountId, Double amount, TransactionType type, Channel channel, LocalDateTime createdAt) {
-        this(null, sourceAccountId, destinationAccountId, amount, type, channel, createdAt);
-    }
-
+    @Id
+    @GeneratedValue
     private Long id;
 
     private String sourceAccountId;

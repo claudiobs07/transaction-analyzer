@@ -5,6 +5,9 @@ import br.com.claudiobs07.transactionanalyzer.model.TransactionStatus;
 import br.com.claudiobs07.transactionanalyzer.producer.ManualAnalysisProducer;
 import br.com.claudiobs07.transactionanalyzer.repository.TransactionAnalyzedRepository;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class TransactionAnalyzedManager {
 
     private final ManualAnalysisProducer manualAnalysisProducer;

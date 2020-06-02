@@ -2,7 +2,6 @@ package br.com.claudiobs07.transactionanalyzer.consumer;
 
 import br.com.claudiobs07.transactionanalyzer.model.Transaction;
 import br.com.claudiobs07.transactionanalyzer.service.TransactionService;
-import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,7 +15,6 @@ public class TransactionConsumer {
     @Inject
     TransactionService transactionService;
 
-    @Incoming("transactions")
     public void process(Transaction transaction) {
         LOG.infov("Process transaction: {}", transaction);
         transactionService.process(transaction);

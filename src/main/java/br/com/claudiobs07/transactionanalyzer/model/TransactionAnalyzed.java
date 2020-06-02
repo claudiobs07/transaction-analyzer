@@ -1,23 +1,31 @@
 package br.com.claudiobs07.transactionanalyzer.model;
 
+import javax.persistence.*;
+
+@Entity
 public class TransactionAnalyzed {
 
-    public TransactionAnalyzed(Long transactionId, Integer score, TransactionStatus status) {
-        this.transactionId = transactionId;
+    public TransactionAnalyzed() {}
+
+    public TransactionAnalyzed(Transaction transaction, Integer score, TransactionStatus status) {
+        this.transaction = transaction;
         this.score = score;
         this.status = status;
     }
 
+    @Id
+    @GeneratedValue
     private Long id;
 
-    private Long transactionId;
+    @JoinColumn(name = "transactionId")
+    private Transaction transaction;
 
     private Integer score;
 
     private TransactionStatus status;
 
     public TransactionAnalyzed(TransactionScore transactionScore, TransactionStatus status) {
-        this.transactionId = transactionScore.getTransaction().getId();
+        this.transaction = transactionScore.getTransaction();
         this.score = transactionScore.getScore();
         this.status = status;
     }
@@ -26,8 +34,8 @@ public class TransactionAnalyzed {
         return id;
     }
 
-    public Long getTransactionId() {
-        return transactionId;
+    public Transaction getTransaction() {
+        return transaction;
     }
 
     public Integer getScore() {

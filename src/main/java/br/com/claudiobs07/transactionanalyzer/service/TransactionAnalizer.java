@@ -5,6 +5,9 @@ import br.com.claudiobs07.transactionanalyzer.model.TransactionAnalyzed;
 import br.com.claudiobs07.transactionanalyzer.model.TransactionScore;
 import br.com.claudiobs07.transactionanalyzer.model.TransactionStatus;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class TransactionAnalizer {
 
     private final ScoreApplicator scoreApplicator;

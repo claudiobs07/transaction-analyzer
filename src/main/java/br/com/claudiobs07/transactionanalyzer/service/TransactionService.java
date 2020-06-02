@@ -25,7 +25,6 @@ public class TransactionService {
         Transaction transactionSaved = transactionRepository.save(transaction);
         TransactionAnalyzed analyzed = transactionAnalizer.analize(transactionSaved);
         transactionAnalyzedManager.manage(analyzed);
-
     }
 
 }
