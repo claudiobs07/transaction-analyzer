@@ -1,48 +1,24 @@
 package br.com.claudiobs07.transactionanalyzer.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
 
 @Entity
-public class TransactionAnalyzed {
+public class TransactionAnalyzed extends PanacheEntity {
 
     public TransactionAnalyzed() {}
 
-    public TransactionAnalyzed(Transaction transaction, Integer score, TransactionStatus status) {
+    public TransactionAnalyzed(Transaction transaction, TransactionStatus status) {
         this.transaction = transaction;
-        this.score = score;
         this.status = status;
     }
 
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @JoinColumn(name = "transactionId")
+    @OneToOne
+    @JoinColumn(name="transaction_id")
     private Transaction transaction;
 
-    private Integer score;
-
+    @Enumerated(EnumType.STRING)
     private TransactionStatus status;
 
-    public TransactionAnalyzed(TransactionScore transactionScore, TransactionStatus status) {
-        this.transaction = transactionScore.getTransaction();
-        this.score = transactionScore.getScore();
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Transaction getTransaction() {
-        return transaction;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public TransactionStatus getStatus() {
-        return status;
-    }
 }
