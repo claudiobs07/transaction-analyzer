@@ -5,18 +5,18 @@ import br.com.claudiobs07.transactionanalyzer.model.*;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class TransactionService {
+public class AnalyzerService {
 
     private final ScoreApplicator scoreApplicator;
 
     private final StatusApplicator statusApplicator;
 
-    public TransactionService(ScoreApplicator scoreApplicator, StatusApplicator statusApplicator) {
+    public AnalyzerService(ScoreApplicator scoreApplicator, StatusApplicator statusApplicator) {
         this.scoreApplicator = scoreApplicator;
         this.statusApplicator = statusApplicator;
     }
 
-    public void process(TransactionDTO transactionDTO) {
+    public void analyse(TransactionDTO transactionDTO) {
         Transaction transaction = transactionDTO.toTransaction();
         transaction.persist();
         TransactionScore score = scoreApplicator.apply(transaction);

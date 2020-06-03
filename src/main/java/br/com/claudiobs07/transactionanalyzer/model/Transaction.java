@@ -19,8 +19,10 @@ public class Transaction extends PanacheEntity {
         this.createdAt = createdAt;
     }
 
+    @Column(name="source_account_id")
     private String sourceAccountId;
 
+    @Column(name="destination_account_id")
     private String destinationAccountId;
 
     private Double amount;
@@ -31,6 +33,7 @@ public class Transaction extends PanacheEntity {
     @Enumerated(EnumType.STRING)
     private Channel channel;
 
+    @Column(name="created_at")
     private LocalDateTime createdAt;
 
 }

@@ -1,7 +1,8 @@
 package br.com.claudiobs07.transactionanalyzer.consumer;
 
 import br.com.claudiobs07.transactionanalyzer.model.TransactionDTO;
-import br.com.claudiobs07.transactionanalyzer.service.TransactionService;
+import br.com.claudiobs07.transactionanalyzer.service.AnalyzerService;
+import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -13,11 +14,12 @@ public class TransactionConsumer {
     private static final Logger LOG = Logger.getLogger(TransactionConsumer.class);
 
     @Inject
-    TransactionService transactionService;
+    AnalyzerService analyzerService;
 
-    public void process(TransactionDTO transactionDTO) {
+    @Incoming("transaction")
+    public void consume(TransactionDTO transactionDTO) {
         LOG.infov("Process transaction: {}", transactionDTO);
-        transactionService.process(transactionDTO);
+        analyzerService.analyse(transactionDTO);
     }
 
 }
